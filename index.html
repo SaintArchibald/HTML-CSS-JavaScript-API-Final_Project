@@ -46,8 +46,8 @@
                         <h1>Browse Movies</h1>
                         <form class="input__wrap">
                             <input type="text" placeholder="Search by Title, Actor or Keyword">
-                            <a href="#movies" type="submit" class="search__wrapper" onclick="openLoadingState()">
-                                <i class="fa-solid fa-video"></i>
+                            <a href="#search__for-results" type="submit" class="search__wrapper" onclick="openLoading()">
+                                <i class="fa-solid fa-video" ></i>
                             </a>
                         </form>
                     </div>
@@ -69,30 +69,51 @@
                 <option value="High_To_Low">Price, High to Low</option>
                 <option value="Rating">Rating</option>
               </select>
-        </div>
-    </section>
-    <section id="movies">
-        <div class="content-wrapper">
-            <img class="b-img" src="./assets/undraw_home_cinema_l7yl.svg" alt="">
-            <div class="loading__state">
-                <i class="fa-solid fa-spinner movies__loading--spinner"></i>
-                <button type="button" class="back__to-search" onclick="closeLoadingState()">
-                    <i class="fa-solid fa-magnifying-glass-minus"></i>
-                </button>
             </div>
-        </div>
-    </section>
-</div>
-
-<div class="popup_container">
-    <div class="popup">
-        <a href="#mainApp">
-            <i class="fa-solid fa-circle-xmark reset"></i>
-        </a>
-        <h2 class="popup-h2">Error!</h2>
-        <p>The contents of this site are not playable. <br> Thank you!</p>
+            <section id="movies">
+                <div class="content-wrapper">
+                    <img class="b-img" src="./assets/undraw_home_cinema_l7yl.svg" alt="">
+                </div>
+            <section id="loading">
+                 <div class="loading__state">
+                     <i class="fa-solid fa-spinner"></i>
+                 </div>
+            </section>
+            </section>
+        </section>
     </div>
-</div>
+    
 
+    <div class="popup_container">
+        <div class="popup">
+            <a href="#mainApp">
+                <i class="fa-solid fa-circle-xmark reset"></i>
+            </a>
+            <h2 class="popup-h2">Error!</h2>
+            <p>The contents of this site are not playable. <br> Thank you!</p>
+        </div>
+    </div>
+    
+    <button type="button" class="back__to-search" onclick="closeLoadingState()">
+        <i class="fa-solid fa-magnifying-glass-minus"></i>
+    </button>
 </body>
+
+<footer class="footer">
+          <div class="">
+            <div class="">
+              <a href="#">
+                <figure class="footer__logo">
+                  <img src="assets/PersonalLogo.png" class="footer__logo--img" alt="">
+                </figure>
+              </a>
+              <div class="footer__list">
+                <a href="#mainApp" class="footer__link link link__hover-effect click">Home</a>
+                <a class="footer__link link link__hover-effect click">About</a>
+                <a href="https://www.linkedin.com/in/archibaldgauthier/" class="footer__link link btn__contact" target="_blank">Contact</a>
+              </div>
+              <div class="footer__copyright">Copyright &copy; 2022 Movie Finder</div>
+            </div>
+          </div>
+        </footer>
 </html>
