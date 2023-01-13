@@ -1,90 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Finder</title>
-    <script src="https://kit.fontawesome.com/be57789c5e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <script
+      src="https://kit.fontawesome.com/be57789c5e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
     <script src="index.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <section id="mainApp">
-        <div class="main__container flex flex-col">
-            <div class="nav_bar flex flex-col">
-                <div class="nav__header content-wrapper">
-                        <div class="nav-logo">
-                            <img class="logo" src="./assets/PersonalLogo.png" alt="Personal-Logo">
-                        </div>
-                        <div class="links">
-                            <a href="" class="link link__hover-effect click">Home</a>
-                            <a href="" class="link link__hover-effect click">Find your movie</a>
-                            <a href="https://www.linkedin.com/in/archibaldgauthier/" target="_blank" class="link btn__contact">Contact</a>
-                        </div>
-                    <!-- <div id="movie__nav">
-                        <div class="bento__menu">
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                            <div class="data-input"></div>
-                        </div>
-                        <div class="close-btn"></div>
-                        <div class="show__menu">
-                            <a href="" class="link1 link__hover-effect click">Home</a>
-                            <a href="" class="link1 link__hover-effect click">Find your movie</a>
-                            <a href="" class="link1 btn__contact click">Contact</a>
-                        </div>
-                    </div> -->
-                    <div class="content-wrapper content-container">
-                        <h1>Browse Movies</h1>
-                        <form class="input__wrap">
-                            <input type="text" placeholder="Search by Title, Actor or Keyword">
-                            <button href="#search__for-results" type="submit" class="search__wrapper" onclick="openLoading()">
-                                <i class="fa-solid fa-video" ></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+      <div class="main__container flex flex-col">
+        <div class="nav_bar flex flex-col">
+          <div class="nav__header">
+            <div class="nav-logo">
+              <img
+                class="logo"
+                src="./assets/PersonalLogo.png"
+                alt="Personal-Logo"
+              />
             </div>
+            <div class="links">
+              <a href="" class="link link__hover-effect click">Home</a>
+              <a href="" class="link link__hover-effect click"
+                >Find your movie</a
+              >
+              <a
+                href="https://www.linkedin.com/in/archibaldgauthier/"
+                target="_blank"
+                class="link btn__contact"
+                >Contact</a
+              >
+            </div>
+          </div>
+          <div class="content-wrapper content-container">
+            <h1>Browse Movies</h1>
+            <form class="input__wrap">
+              <input
+                type="text"
+                placeholder="Search by Title, Actor or Keyword"
+                class="inputInfo"
+              />
+              <button
+                href="#search__for-results"
+                type="submit"
+                class="search__wrapper"
+                onclick="openLoading()"
+              >
+                <i class="fa-solid fa-video"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <section id="search">
+        <div class="progress__bars"></div>
+      </section>
+    </section>
+
+    <section id="movies">
+      <section id="search__for-results" class="content-wrapper">
+        <div class="search__results-container">
+          <h2 class="search__results">Search Results:</h2>
+          <select id="filter">
+            <option value="" disabled selected>Sort</option>
+            <option value="OLD_TO_NEW">Price, Old to New</option>
+            <option value="NEW_To_OLD">Price, New to Old</option>
+            <option value="Rating">Rating</option>
+          </select>
+        </div>
+      </section>
+      <section id="movie__results">
+        <div class="movie--post">
+            <figure class="poster--wrapper">
+                <img class="movie--poster" src="./assets/PersonalLogo.png" alt="">
+                <p class="movie--year">2023</p>
+            </figure>
+            <h2 class="movie--name">gauthier archibald</h2>
+            <h4 class="movie--featured-actors">kgkjuguig iiuuui, ii7i7qt7 y9y9WY9, IUYWI7I</h4>
         </div>
     </section>
-    <div class="app2">
-        <section id="search">
-            <div class="progress__bars">
-            </div>
-    </section>
-    <section id="search__for-results" class="content-wrapper">
-        <div class="search__results-container">
-            <h2 class="search__results">Search Results:</h2>
-            <select id="filter">
-                <option value="" disabled selected>Sort</option>
-                <option value="Low_To_High">Price, Low to High</option>
-                <option value="High_To_Low">Price, High to Low</option>
-                <option value="Rating">Rating</option>
-              </select>
-            </div>
-            <section id="movies">
-                <div class="content-wrapper">
-                    <img class="b-img" src="./assets/undraw_home_cinema_l7yl.svg" alt="">
-                </div>
-            <section id="loading">
+      <!-- <section id="loading">
                  <div class="loading__state">
                      <i class="fa-solid fa-spinner"></i>
                  </div>
-            </section>
-            </section>
-        </section>
-    </div>
+            </section> -->
+    </section>
     
-
-    <div class="popup_container">
+  
+    <!-- <div class="popup_container">
         <div class="popup">
             <a href="#mainApp">
                 <i class="fa-solid fa-circle-xmark reset"></i>
@@ -92,28 +100,40 @@
             <h2 class="popup-h2">Error!</h2>
             <p>The contents of this site are not playable. <br> Thank you!</p>
         </div>
-    </div>
-    
-    <button type="button" class="back__to-search" onclick="closeLoadingState()">
-        <i class="fa-solid fa-magnifying-glass-minus"></i>
-    </button>
-</body>
+    </div> -->
 
-<footer class="footer">
-          <div class="">
-            <div class="">
-              <a href="#">
-                <figure class="footer__logo">
-                  <img src="assets/PersonalLogo.png" class="footer__logo--img" alt="">
-                </figure>
-              </a>
-              <div class="footer__list">
-                <a href="#mainApp" class="footer__link link link__hover-effect click">Home</a>
-                <a class="footer__link link link__hover-effect click">About</a>
-                <a href="https://www.linkedin.com/in/archibaldgauthier/" class="footer__link link btn__contact" target="_blank">Contact</a>
-              </div>
-              <div class="footer__copyright">Copyright &copy; 2022 Movie Finder</div>
-            </div>
-          </div>
-        </footer>
+    <!-- <button type="button" class="back__to-search" onclick="closeLoadingState()">
+        <i class="fa-solid fa-magnifying-glass-minus"></i>
+    </button> -->
+  </body>
+
+
+  <footer class="footer">
+    <div class="">
+      <div class="">
+        <a href="#">
+          <figure class="footer__logo">
+            <img
+              src="assets/PersonalLogo.png"
+              class="footer__logo--img"
+              alt=""
+            />
+          </figure>
+        </a>
+        <div class="footer__list">
+          <a href="#mainApp" class="footer__link link link__hover-effect click"
+            >Home</a
+          >
+          <a class="footer__link link link__hover-effect click">About</a>
+          <a
+            href="https://www.linkedin.com/in/archibaldgauthier/"
+            class="footer__link link btn__contact"
+            target="_blank"
+            >Contact</a
+          >
+        </div>
+        <div class="footer__copyright">Copyright &copy; 2022 Movie Finder</div>
+      </div>
+    </div>
+  </footer>
 </html>

@@ -1,6 +1,50 @@
-function openLoading() {
-  document.getElementById('loading')
+// d7c289f8b7msh81ad3ce3f44af26p1e6137jsned76614bc1b6
+
+function convert() {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'd7c289f8b7msh81ad3ce3f44af26p1e6137jsned76614bc1b6',
+      'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+    }
+  };
+  
+  const movieData = fetch('https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr', options)
+	.then(response => response.json())
+	.then(data => {
+    const list = data.d
+
+    list.map((item) => {
+      const poster = item.i.imageUrl;
+      const name = item.l;
+      const featuredActors = item.s;
+      const year = item.y;
+      const webPosting = `<div class="movie--post">
+<figure class="poster--wrapper">
+<img class="movie--poster" src="${poster}" alt="">
+<p class="movie--year">${year}</p>
+</figure>
+<h2 class="movie--name">${name}</h2>
+<h4 class="movie--featured-actors">${featuredActors}</h4>
+</div>`
+document.querySelector('#movie__results').innerHTML += webPosting
+    })
+
+  })
+	.catch(err => console.error(err));
 }
+
+convert()
+// const dataToHtml = 
+
+
+// async function openLoading() {
+//   const keyWord = document.getElementById("inputInfo").value;
+
+//   if (!keyWord) {
+//     alert("Sorry! we could not find anything related to your search.")
+//   }
+// }
 
 
 // const loading = document.getElementById("loading")
@@ -12,8 +56,38 @@ function openLoading() {
 // function closeLoading() {
 //   search__wrapper.classList.remove("open-LoadingState")
 // }
+// fetchMovies()
+
+  //   .then(response => response.json())
+// 	.then(apiData => {
+//     const list = apiData
+//     apiData.map((api) => 
+    // `<div class="movieResults">
+    // <div class="content-display">
+    // <figure class="movie__poster-wrapper">
+    // <a href="">
+    // <img class="movie__poster click" src="./assets/PersonalLogo.png" alt="">
+    // </a>
+    // </figure>
+    // <div class="poster-info">
+    // <div class="content__title">the walking dead</div>
+    // <div class="movie__release">2017</div>
+    // </div>
+    // </div>
+    // </div>`).join("")
+//   })
+//   .catch(err => console.error(err));
 
 
+// function showMovies () {
+//   const movieCase = document.querySelector('.moviesDisplayed');
+  
+//   movieCase.innerHTML = j  
+// }
+
+// setTimeout (() => {
+//   return showMovies()
+// });
 
 
 
