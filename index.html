@@ -66,11 +66,10 @@
       <section id="search__for-results" class="content-wrapper">
         <div class="search__results-container">
           <h2 class="search__results">Search Results:</h2>
-          <select id="filter">
+          <select id="filter" onchange="filterMovieInput(event)">
             <option value="" disabled selected>Sort</option>
-            <option value="OLD_TO_NEW">Price, Old to New</option>
-            <option value="NEW_To_OLD">Price, New to Old</option>
-            <option value="Rating">Rating</option>
+            <option value="OLD_TO_NEW">Old to New</option>
+            <option value="NEW_TO_OLD">New to Old</option>
           </select>
         </div>
       </section>
@@ -79,9 +78,10 @@
             <figure class="poster--wrapper">
                 <img class="movie--poster" src="./assets/PersonalLogo.png" alt="">
                 <p class="movie--year">2023</p>
+                <p class="movie--style">2023</p>
             </figure>
             <h2 class="movie--name">gauthier archibald</h2>
-            <h4 class="movie--featured-actors">kgkjuguig iiuuui, ii7i7qt7 y9y9WY9, IUYWI7I</h4>
+            <h4 class="movie--type">kgkjuguig iiuuui</h4>
         </div>
     </section>
       <!-- <section id="loading">

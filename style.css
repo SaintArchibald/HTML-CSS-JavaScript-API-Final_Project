@@ -350,21 +350,24 @@ SECTION #movies
   #movie__results {
     width: 100%;
     height: 100%;
+    max-height: calc(100vh - 4vh);
     background-color: transparent;
     display: flex;
     flex-wrap: wrap;
     align-items: start;
-    justify-content: start;
+    justify-content: center;
+    /* align-content: center; */
     padding: 0 4px;
     position: absolute;
-    top: 32px;
+    top: 38px;
+    overflow: hidden;
   }
   
   .movie--post {
     width: calc(100% / 7.5);
     height: calc(100% / 3);
     max-height: 300px;
-    background-color: #900929;
+    background-color: #711525;
     border: 2px solid #276D9B;
     border-radius: 5px;
     display: flex;
@@ -372,7 +375,8 @@ SECTION #movies
     justify-content: center;
     align-items: center;
     padding: 4px;
-    margin: 10px;
+    margin: 4px;
+    transform: all 300ms ease;
   }
   
   .poster--wrapper {
@@ -386,23 +390,45 @@ SECTION #movies
 }
 
 .movie--poster {
-    width: 150px;
-    height: 200px;
+  width: 100%;
+  max-width: 150px;
+  height: 100%;
+  max-height: 200px;
+  cursor: pointer;
+  transition: all 300ms ease;
   }
   
   .movie--year {
     position: absolute;
-    top: 0;
-    right: -24px;
+    top: 1px;
+    right: -1px;
     font-size: 14px;
     background-color: #D6E9F5;
+    color: #242424 !important;
     border-radius: 5px;
     padding: 0 1px;
   }
+
+  .movie--style {
+    position: absolute;
+    top: 1px;
+    left: -1px;
+    font-size: 14px;
+    background-color: #D6E9F5;
+    color: #242424 !important;
+    border-radius: 5px;
+    padding: 0 1px;
+    transform: scale(0);
+    transition: all 300ms ease;
+  }
+
+  .movie--poster:hover .movie--style {
+    transform: scale(1);
+  }
   
-  .movie--name, .movie--featured-actors {
+  .movie--name, .movie--type {
     color: #D6E9F5 ;
-    /* text-align: start; */
+    overflow: hidden;
   }
 
   .movie--name {
@@ -410,9 +436,23 @@ SECTION #movies
     padding-bottom: 4px;
   }
 
-  .movie--featured-actors {
-    font-size: 12px;
+  .movie--type {
+    font-size: 8px;
   }
+
+.movie--post:hover .movie--poster {
+  transform: scale(1.05);
+}
+
+.movie--post:active {
+  transform: scale(0.98);
+}
+
+.movie--post:visited {
+  border-color: #D6E9F5;
+}
+
+
 
   /*
 

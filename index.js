@@ -1,41 +1,43 @@
 // d7c289f8b7msh81ad3ce3f44af26p1e6137jsned76614bc1b6
+// let searchInput;
 
-function convert() {
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': 'd7c289f8b7msh81ad3ce3f44af26p1e6137jsned76614bc1b6',
-      'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-    }
-  };
+let movieListEl = document.querySelector("#movie__results");
+
+async function convertApi(filter) {
+  const fetchMovies = await fetch(`http://www.omdbapi.com/?apikey=f0f446dc&s=fast`);
+  const movieData = await fetchMovies.json();
+  const movielist = movieData.Search;
+
+
+  const movieListResponse = movielist.map( (movie) => movieHTML(movie) ).join("");
   
-  const movieData = fetch('https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr', options)
-	.then(response => response.json())
-	.then(data => {
-    const list = data.d
-
-    list.map((item) => {
-      const poster = item.i.imageUrl;
-      const name = item.l;
-      const featuredActors = item.s;
-      const year = item.y;
-      const webPosting = `<div class="movie--post">
-<figure class="poster--wrapper">
-<img class="movie--poster" src="${poster}" alt="">
-<p class="movie--year">${year}</p>
-</figure>
-<h2 class="movie--name">${name}</h2>
-<h4 class="movie--featured-actors">${featuredActors}</h4>
-</div>`
-document.querySelector('#movie__results').innerHTML += webPosting
-    })
-
-  })
-	.catch(err => console.error(err));
+  if (filter === "OLD_TO_NEW") {
+    movielist.sort((a,b) => a.Search.Year - b.Search.Year)
+    // console.log('old to new')
+  } else if (filter === "NEW_TO_OLD") {
+    movielist.sort((a,b) => b.Year - a.Year)
+    // console.log('new to old')
+  }
+  movieListEl.innerHTML += movieListResponse 
 }
 
-convert()
-// const dataToHtml = 
+convertApi(); 
+
+function movieHTML(movie) {
+  return `
+  <div class="movie--post">
+  <figure class="poster--wrapper">
+  <img class="movie--poster" src="${movie.Poster}" alt="">
+  <p class="movie--year">${movie.Year}</p>
+  </figure>
+  <h2 class="movie--name">${movie.Title}</h2>
+  <h4 class="movie--type">${movie.Type}</h4>
+  </div>`;
+}
+
+function filterMovieInput(event) {
+    convertApi(event.target.value)
+}
 
 
 // async function openLoading() {
@@ -58,39 +60,7 @@ convert()
 // }
 // fetchMovies()
 
-  //   .then(response => response.json())
-// 	.then(apiData => {
-//     const list = apiData
-//     apiData.map((api) => 
-    // `<div class="movieResults">
-    // <div class="content-display">
-    // <figure class="movie__poster-wrapper">
-    // <a href="">
-    // <img class="movie__poster click" src="./assets/PersonalLogo.png" alt="">
-    // </a>
-    // </figure>
-    // <div class="poster-info">
-    // <div class="content__title">the walking dead</div>
-    // <div class="movie__release">2017</div>
-    // </div>
-    // </div>
-    // </div>`).join("")
-//   })
-//   .catch(err => console.error(err));
-
-
-// function showMovies () {
-//   const movieCase = document.querySelector('.moviesDisplayed');
   
-//   movieCase.innerHTML = j  
-// }
-
-// setTimeout (() => {
-//   return showMovies()
-// });
-
-
-
 
 
 
