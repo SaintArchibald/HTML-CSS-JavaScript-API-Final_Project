@@ -12,8 +12,8 @@ async function convertApi(filter) {
   const movieListResponse = movielist.map( (movie) => movieHTML(movie) ).join("");
   
   if (filter === "OLD_TO_NEW") {
-    movielist.sort((a,b) => a.Search.Year - b.Search.Year)
-    // console.log('old to new')
+    const hello = movielist.sort((a,b) => a.Year - b.Year)
+    console.log(hello)
   } else if (filter === "NEW_TO_OLD") {
     movielist.sort((a,b) => b.Year - a.Year)
     // console.log('new to old')
