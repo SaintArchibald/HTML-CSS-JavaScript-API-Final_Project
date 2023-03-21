@@ -2,63 +2,66 @@
 // let searchInput;
 
 let movieListEl = document.querySelector("#movie__results");
+let currentSearch = ''
 
-async function convertApi(filter) {
-  const fetchMovies = await fetch(`http://www.omdbapi.com/?apikey=f0f446dc&s=fast`);
+async function convertApi(userSearch, filter) {
+  movieListEl.innerHTML = ""
+  const fetchMovies = await fetch(`http://www.omdbapi.com/?apikey=f0f446dc&s=${userSearch}`);
   const movieData = await fetchMovies.json();
-  const movielist = movieData.Search;
+  let movielist = movieData.Search;
 
-
-  const movieListResponse = movielist.map( (movie) => movieHTML(movie) ).join("");
   
   if (filter === "OLD_TO_NEW") {
-    const hello = movielist.sort((a,b) => a.Year - b.Year)
-    console.log(hello)
+    movielist.sort((a,b) => a.Year - b.Year)
+    // console.log(hello)
   } else if (filter === "NEW_TO_OLD") {
     movielist.sort((a,b) => b.Year - a.Year)
     // console.log('new to old')
   }
+  
+  const movieListResponse = movielist.map( (movie) => movieHTML(movie) ).join("");
   movieListEl.innerHTML += movieListResponse 
 }
 
-convertApi(); 
-
 function movieHTML(movie) {
+  // check if the movie has a valid poster image URL/ adding default image
+  const posterUrl = movie.Poster !== "N/A" ? movie.Poster : "./assets/404error.jpg";
+
   return `
   <div class="movie--post">
-  <figure class="poster--wrapper">
-  <img class="movie--poster" src="${movie.Poster}" alt="">
-  <p class="movie--year">${movie.Year}</p>
-  </figure>
-  <h2 class="movie--name">${movie.Title}</h2>
-  <h4 class="movie--type">${movie.Type}</h4>
+    <figure class="poster--wrapper">
+      <img class="movie--poster" src="${posterUrl}" alt="">
+      <p class="movie--year">${movie.Year}</p>
+    </figure>
+    <h2 class="movie--name">${movie.Title}</h2>
+    <h4 class="movie--type">${movie.Type}</h4>
   </div>`;
 }
 
 function filterMovieInput(event) {
-    convertApi(event.target.value)
+  const filter = event.target.value;
+  convertApi(currentSearch, filter);
 }
 
+function searchMovieInput(event) {
+  const searchQuery = event.target.value.trim();
+  currentSearch = searchQuery;
+  convertApi(searchQuery, '');
 
-// async function openLoading() {
-//   const keyWord = document.getElementById("inputInfo").value;
-
-//   if (!keyWord) {
-//     alert("Sorry! we could not find anything related to your search.")
-//   }
+// function filterMovieInput(event) {
+//   const userSearch = document.querySelector("#search").value;
+//   convertApi(userSearch, event.target.value)
 // }
 
+// function searchMovieInput(event) {
+//   const filter = document.querySelector("#filter").value;
+//   const searchQuery = event.target.value;
+//   convertApi(searchQuery, filter);
+}
 
-// const loading = document.getElementById("loading")
-// const button = document.getElementsByClassName("search__wrapper")
+convertApi(); 
 
-// button.onclick = function openLoading() {
-//   search__wrapper.classList.add("open-Loading")
-// }
-// function closeLoading() {
-//   search__wrapper.classList.remove("open-LoadingState")
-// }
-// fetchMovies()
+
 
   
 
