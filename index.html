@@ -36,6 +36,22 @@
                 >Contact</a
               >
             </div>
+            <figure title="burger Menu" class="burger__menu" onclick="openMenu()">
+              <i class="fa-solid fa-bars middle"></i>
+            </figure>
+            <section class="burger__links">
+              <div class="burger__place">
+                <i class="exit fa-solid fa-x" onclick="closeMenu()"></i>
+                <a href="" class="burger__link link__hover-effect click" onclick="closeMenu()">Home</a>
+                <a href="" class="burger__link link__hover-effect click" onclick="closeMenu()">Find your movie</a>
+                <a
+                href="https://www.linkedin.com/in/archibaldgauthier/"
+                target="_blank"
+                class="burger__link btn__contact"
+                >Contact</a
+                >
+              </div>
+            </section>
           </div>
           <div class="content-wrapper content-container">
             <h1>Browse Movies</h1>
@@ -59,15 +75,9 @@
           </div>
         </div>
       </div>
-      <section id="search">
-        <div class="progress__bars"></div>
-      </section>
-    </section>
-
-    <section id="movies">
       <section id="search__for-results" class="content-wrapper">
         <div class="search__results-container">
-          <h2 class="search__results">Search Results:</h2>
+          <h2 class="search__results">Results:</h2>
           <select id="filter" onchange="filterMovieInput(event)">
             <option value="" disabled selected>Sort</option>
             <option value="OLD_TO_NEW">Old to New</option>
@@ -75,6 +85,13 @@
           </select>
         </div>
       </section>
+      <section id="search">
+        <div class="progress__bars"></div>
+      </section>
+    </section>
+
+    <section id="movies">
+      
       <section id="movie__results">
         <!-- <div class="movie--post">
             <figure class="poster--wrapper">
